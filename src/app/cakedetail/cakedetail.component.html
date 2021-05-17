@@ -1,0 +1,22 @@
+<div class="cake--details">
+    <div class="image">
+        <img src={{cake.image}}>
+    </div>
+    <div class="details">
+        <div class="name">{{cake.name}}</div>
+        <div class="rating">{{cake.ratings}} Ratings</div>
+        <div class="review">{{cake.reviews}} Reviews</div>
+        <div class="price">{{cake.price}}Rs.</div>
+        <!-- <div class="flavour">flavour:{{cake.name}}</div> -->
+        <div class="chef">Owner:{{cake.owner.name}}</div>
+        <div class="type">{{cake.type}}</div>
+        <!-- <div class="weight"> weight : {{cake[0].weight}}</div> -->
+        <button (click)="addToCart(cake)" type="submit">Add to Cart</button>
+        <form>
+            <input (change)='uplaodImg($event)' type="file" name="img" >
+            
+        </form>
+    </div>
+
+
+</div>

@@ -1,0 +1,66 @@
+<!-- <form class="row g-3 needs-validation" novalidate>
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Name</label>
+      <input [(ngModel)]="order.userName" name="namef" type="text" class="form-control" id="validationCustom01" placeholder="Name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Address</label>
+      <input [(ngModel)]="order.userAddress"name="address" type="text" class="form-control" id="validationCustom02" placeholder="Address" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label">Phone no.</label>
+      <div class="input-group has-validation">
+        
+        <input [(ngModel)]="order.userPhone" name="phone"type="number" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a Phone no.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="validationCustom03" class="form-label">City</label>
+      <input [(ngModel)]="order.userCity" name="city" type="text" class="form-control" id="validationCustom03" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <label for="validationCustom05" class="form-label">pinCode</label>
+      <input [(ngModel)]="order.userPin" name="pin" type="text" class="form-control" id="validationCustom05" required>
+      <div class="invalid-feedback">
+        Please provide a valid pin.
+      </div>
+    </div>
+    
+    <div class="col-12">
+      <button (click)="placeOrder()" class="btn btn-primary" type="submit">place Order</button>
+    </div>
+  </form> -->
+
+
+
+
+
+
+
+<div class="place--o">
+  <aside>
+    <div>
+      <!-- <li ><a [routerLink]="['ordersummery']">order-Summery</a></li> -->
+      <li><a [routerLink]="['address']">Address</a></li>
+      <!-- <li><a [routerLink]="['payment']">Payment</a></li> -->
+      <li><a [routerLink]="['confirmorder']">Confirm Order</a></li>
+      
+    </div>
+  </aside>
+  <router-outlet>
+
+  </router-outlet>
+</div>

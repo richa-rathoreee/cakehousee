@@ -1,0 +1,20 @@
+<div class="order">
+    <button routerLink="/placeorder">Order</button>
+    <div class="total">Total:  {{total}} Rs.</div>
+    <div class="heading">
+        <div>S.No.</div>
+        <div>cake</div>
+        <div>Quantity</div>
+        <div>Price</div>
+        <div>Remove</div>
+
+    </div>
+    <div class="item" *ngFor="let item of items,index as i">
+        <div>{{i+1}}</div>
+        <img src={{item.image}} height="80px" width="80px">
+        <div>{{item.quantity}}</div>
+        <div>{{item.price}} Rs.</div>
+        <button (click)="removeFromCart(item)">Remove</button>
+
+    </div>
+</div>

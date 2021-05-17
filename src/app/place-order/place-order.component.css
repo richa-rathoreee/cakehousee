@@ -1,0 +1,22 @@
+/* aside{
+    border: brown;
+    background-color: burlywood;
+    width: 20%;
+    padding: 20px;
+    
+
+} */
+
+
+.place--o{
+    display:flex
+}
+.place--o>aside{
+    width: 18%;
+    background-color: burlywood;
+    height: 80vh;
+    padding: 20px;
+}
+.place--o>router-outlet{
+    padding: 50px;
+}

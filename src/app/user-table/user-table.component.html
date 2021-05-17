@@ -1,0 +1,21 @@
+
+<div class="table">
+    <table>
+        <tr>
+            <th>S.no.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let eachUser of details; index as i">
+            <td>{{i+1}}</td>
+            <td>{{eachUser.name}}</td>
+            <td>{{eachUser.email}}</td>
+            <td><img src={{eachUser.image}} height="100px" width="100px"></td>
+            <td><button (click)=delete()>delete</button></td>
+            
+        </tr>
+    </table>
+
+</div>

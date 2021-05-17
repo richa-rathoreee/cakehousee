@@ -1,0 +1,42 @@
+.cake--details{
+    background-color:  #f8ab9336;
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 40px;
+    border-radius: 4px;
+    height: 500px;
+
+}
+
+.image>img {
+    width:20vw;
+    height: 30vh;
+    align-content: center;
+    justify-content: center;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    
+}
+.details>div{
+    padding: 10px;
+
+}
+button[type=submit]{
+    width:25%;
+    margin: auto;
+    border-radius: 4px;
+    color: #fff;
+    background-color: rgb(219, 61, 100);
+    border:none
+}
+
+button[type=submit]:hover{
+    background-color: #610410ad;
+    
+}

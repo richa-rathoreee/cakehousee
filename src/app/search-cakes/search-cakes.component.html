@@ -1,0 +1,38 @@
+<div class="filter">
+  <input [(ngModel)]="minPrice" type="text" name="min" placeholder="min price">
+  <input [(ngModel)]="maxPrice" type="text" name="max" placeholder="max price">
+  <button (click)="priceFilter()">Filter</button>
+
+</div>
+
+<div class="cake--container">
+  <div *ngFor="let eachCake of cakes" appHighlight enterColor="white" leaveColor="red" class="card"
+    style="width: 18rem;">
+    <div class="veg" *ngIf="eachCake.eggless">
+      <div class="square">
+
+        <div class="circle">
+
+        </div>
+      </div>
+
+    </div>
+    <div class="non--veg" *ngIf="!eachCake.eggless">
+      <div class="square--nonveg">
+
+        <div class="circle--nonveg">
+
+        </div>
+      </div>
+    </div>
+    <div class="cake--img">
+      <img src={{eachCake.image}} class="card-img-top" alt="...">
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{eachCake.name}}</p>
+      <p class="card-text">{{eachCake.weight}}</p>
+      <p class="card-text">{{eachCake.price}}</p>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.add--user{
+    display:flex;
+    flex-direction: column;
+    padding: 2em 5em;
+}
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+form >label{
+    font-size: 20px;
+}
+form>input[type='text']{
+     padding: 20px;
+}

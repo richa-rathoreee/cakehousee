@@ -1,0 +1,43 @@
+<!-- <div class="container">
+    <div class="head--row">
+        <div>s.no.</div>
+        <div>cake id</div>
+        <div>Cake Image</div>
+        <div>Name</div>
+        <div>Price</div>
+        <div>action</div>
+
+    </div>
+    <div class="data--row" *ngFor="let cake of cakes,index as i">
+        <div>{{i+1}}</div>
+        <div>{{cake.cakeid}}</div>
+        <img src={{cake.image}} height='100px' width="100px">
+        <div>{{cake.name}}</div>
+        <div>{{cake.price}}</div>
+        <button (click)="editCakeDetails(cake)" >edit</button>
+    </div>
+
+</div> -->
+
+
+
+<div class="order">
+    <div class="heading">
+        <div>S.No.</div>
+        <div>Cake ID</div>
+        <div>cake</div>
+    
+        <div>Price</div>
+        <div>Edit</div>
+
+    </div>
+    <div class="item" *ngFor="let cake of cakes,index as i">
+        <div>{{i+1}}</div>
+        <div>{{cake.cakeid}}</div>
+        <img src={{cake.image}} height="80px" width="80px">
+        
+        <div>{{cake.price}} Rs.</div>
+        <button (click)="editCakeDetails(cake)">Edit</button>
+
+    </div>
+</div>

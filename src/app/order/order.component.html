@@ -1,0 +1,78 @@
+<!-- 
+<div class="order">
+
+    <h1>My Orders</h1>
+    <div class="heading">
+        <div>S.No.</div>
+        <div>Owner name</div>
+        <div>cake ID</div>
+        <div>Order Date</div>
+        <div>Price</div>
+        <div>Details</div>
+    </div>
+    <div class="item" *ngFor="let orderDetail of orderDetails,index as i">
+    <div>{{i+1}}</div>
+    <div>{{orderDetail.name}}</div>
+    <div>{{orderDetail.orderid}}</div>
+    <div>{{orderDetail.orderdate}}</div>
+    <div>{{orderDetail.price}}</div>
+    
+    <div><button (click)="showDetail(i)">Details</button></div>
+    <div class="detail" *ngFor="let orderDetail of orderDetails ,index as i">
+    
+        <div *ngFor="let eachCake of orderDetail.cakes">
+            <div>{{eachCake.quantity}}</div>
+            <div>{{eachCake.cakeid}}</div>
+            <img src={{eachCake.image}} height="40px" width="60px">
+        
+        
+        </div>
+ </div>
+
+
+
+   
+
+</div>
+
+
+ -->
+
+
+
+ <div class="order" >
+   
+    <div class="itemm" *ngFor="let orderDetail of orderDetails,index as i">
+        <div><span>S.No</span>{{i+1}}</div>
+        <div><span>Name</span>{{orderDetail.name}}</div>
+        <div><span>Order ID</span>{{orderDetail.orderid}}</div>
+        <div><span>Date</span>{{orderDetail.orderdate}}</div>
+          <div><button (click)="showDetail(i)">Details</button></div>
+
+        
+    
+     </div>
+     <div class="detail hidden" *ngFor="let orderDetail of orderDetails ,index as i" id=id{{i}}>
+    
+        <div *ngFor="let eachCake of orderDetail.cakes">
+            <img src={{eachCake.image}} height="60px" width="80px">
+        
+            <div>{{eachCake.quantity}}Pcs</div>
+            <div>Cake ID--{{eachCake.cakeid}} </div>
+            <!-- <div>{{eachCake.mode}}</div>
+            <div>{{eachCake.email}}</div> -->
+
+        
+        
+        </div>
+    
+ </div>
+
+
+
+
+
+ 
+
+
+ 

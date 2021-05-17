@@ -1,0 +1,38 @@
+<div class="container">
+     <form>
+        <div class="cake--name">
+            <label>Cake Name</label>
+            <input [(ngModel)]="cake.name"  value={{cake.name}} type="text" name="name" >
+        </div>
+        <div class=" cake-image">
+            <label>Cake Image</label>
+            <img src={{cake.image}}   type="text" name="image" height="50px" width="50px" >
+            <!-- <input type="file"[(ngModel)]="cake.image" name="imgupdate"> -->
+            <!-- <input  type="file" name="profile" (change)="updateImage($event)" /> -->
+        </div>
+        <div class="ingre">
+            <label>Ingrediants</label>
+            <input [(ngModel)]="cake.ingredients" value={{cake.ingredients}} type="text" name="ingre" >
+        </div>
+        <div class="price">
+            <label>Price</label>
+            <input [(ngModel)]="cake.price" value={{cake.price}} type="text" name="price" >
+        </div>
+        <div class="egg">
+            <label>Eggless</label>
+            <input [(ngModel)]="cake.eggless" type="checkbox" id="egg" name="egg" value="egg" *ngIf="cake.eggless" checked>
+            <input [(ngModel)]="cake.eggless" type="checkbox" id="egg" name="eggl" value="egg" *ngIf="!cake.eggless" >
+        
+        </div>
+        <div class="owner">
+            <label>Owner Details</label><br>
+            <label>name</label>
+            <input [(ngModel)]="cake.owner.name" type="text" name="ownername"  value={{cake.owner.name}}>
+            <label>Email:</label>
+            <input [(ngModel)]="cake.owner.email"  value={{cake.owner.email}} type="email" name="owneremail">
+
+        </div>
+        <button (click)="saveChanges()">submit</button> 
+
+    </form>
+</div>
