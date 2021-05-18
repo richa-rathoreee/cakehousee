@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import{CommonService} from '../common.service'
+
 
 @Component({
   selector: 'app-address',
@@ -17,7 +19,7 @@ export class AddressComponent implements OnInit {
 
 
 
-  placeOrder() {
+  addDetail() {
     //console.log(this.order)
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     let  forms = document.querySelectorAll('.needs-validation')
@@ -71,7 +73,10 @@ export class AddressComponent implements OnInit {
     
 
       console.log(this.objOrder)
-      this.toastr.show("order placed")
+      this.toastr.show("Details added")
+      console.log(this.cs.confirmOrder);
+      this.cs.confirmOrder=this.objOrder;
+      console.log("cssssssssssssssssssss",this.cs.confirmOrder)
 
 
     }, (error) => {
@@ -79,14 +84,14 @@ export class AddressComponent implements OnInit {
 
     })
 
-    let apiUrll="https://apibyashu.herokuapp.com/api/addcakeorder";
-    this.http.post(apiUrll,this.objOrder).subscribe(
-      (res:any)=>{
-        console.log(res);
-      },
-    (err)=>{
-      console.log(err);
-    })
+    // let apiUrll="https://apibyashu.herokuapp.com/api/addcakeorder";
+    // this.http.post(apiUrll,this.objOrder).subscribe(
+    //   (res:any)=>{
+    //     console.log(res);
+    //   },
+    // (err)=>{
+    //   console.log(err);
+    // })
 
 
     
@@ -95,7 +100,14 @@ export class AddressComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(
+    private http: HttpClient, 
+    private toastr: ToastrService,
+    private cs:CommonService) { 
+      this.cs.confirmOrder=this.objOrder
+
+
+    }
 
   ngOnInit(): void {
   }

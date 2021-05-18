@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { ToastrModule } from 'ngx-toastr';
+import {GaurdService} from "./gaurd.service"
 
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
@@ -36,6 +37,7 @@ import { AddressComponent } from './address/address.component';
 import { OrderSummeryComponent } from './order-summery/order-summery.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { GaurdDeactivateService } from './gaurd-deactivate.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
-    multi: true}
+    multi: true},
+     GaurdService,
+     GaurdDeactivateService
   ],
   bootstrap: [AppComponent]
 })

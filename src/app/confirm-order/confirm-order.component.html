@@ -1,1 +1,15 @@
-<p>confirm-order works!</p>
+<p>Confrim Order</p>
+
+
+<div>{{placeOrder.name}}</div>
+<div>{{placeOrder.address}}</div>
+<div>{{placeOrder.city}}</div>
+<div>{{placeOrder.pincode}}</div>
+<div>{{placeOrder.phone}}</div>
+<div *ngFor="let placeOdr of placeOrder.cakes">
+    <div>{{placeOdr.price}}</div>
+    <div><img src="{{placeOdr.image}}"></div>
+    <div>{{placeOdr.price}}</div>
+
+</div>
+<div ><button (click)=cPlaceOrder()>placeOrder</button></div>
