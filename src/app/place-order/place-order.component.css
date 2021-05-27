@@ -13,10 +13,27 @@
 }
 .place--o>aside{
     width: 18%;
-    background-color: burlywood;
+    background-color: #c7401767;
     height: 80vh;
     padding: 20px;
 }
-.place--o>router-outlet{
-    padding: 50px;
+ul{
+    list-style: none;
+   
+}
+ul li a{ 
+    font-weight: 500;
+    font-size: large;
+    color: black;
+    text-decoration: none;
+   
+}
+ul li{
+    padding: 10px 0px;
+}
+
+ li a:hover{
+    background-color: blanchedalmond;
+    padding: 5px;
+
 }

@@ -4,3 +4,36 @@
    margin-top: 50px;
     
 }
+
+.order{
+   width: 80vw;
+
+   padding: 40px;
+   ;
+}
+.heading{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   background-color: bisque;
+   height: 6vh;
+   font-size: larger;
+   font-weight: 400;
+   padding: 0px 10px;
+}
+
+.item--data{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   border: rgba(75, 2, 6, 0.384) 2px  ridge;
+}
+.total{
+   background-color: bisque;
+   text-align: right;
+   padding: 10px;
+   font-size: larger;
+   font-weight: 400;
+
+}
+

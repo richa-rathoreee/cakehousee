@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -12,33 +12,12 @@ export class CakecartComponent implements OnInit {
 
   items: any;
   total: any;
+  noData: any
 
-
-  removeFromCart(item: any) {
-
-    let apiUrl = "https://apibyashu.herokuapp.com/api/removecakefromcart"
-    this.http.post(apiUrl, { cakeid: item.cakeid }).subscribe(
-      (response: any) => {
-        console.log("item removed", response);
-        this.toastr.success("Item removed")
-      }, (error) => {
-        console.log(error);
-      })
-
-  }
-
-
-  placeOrder() {
-
-
-  }
-
-  constructor(private http: HttpClient,
-    private router: Router, private toastr: ToastrService) {
-
+  getCart() {
     let myHeaders = new HttpHeaders();
     let apiUrl = "https://apibyashu.herokuapp.com/api/cakecart";
-//    console.log(apiUrl);
+    //    console.log(apiUrl);
     myHeaders = myHeaders.set("authtoken", localStorage.token)
     this.http.post(apiUrl, {}, {
       headers: myHeaders
@@ -47,14 +26,12 @@ export class CakecartComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.items = response.data;
-        console.log(this.items)
-        this.total = this.items.reduce((acc: any, item: any) => {
-
-        //  console.log(item.price, item.quantity)
-          return acc+ item.price * item.quantity 
-
-
-          // console.log("total",item)
+        if (response.message == "your cart is empty") {
+          this.noData = true;
+        }
+        //console.log(this.items)
+        this.total = this.items.reduce((acc: any, item: any) => {// to calculate total of cakes price
+          return acc + item.price * item.quantity
 
         }, 0)
         console.log(this.total)
@@ -64,9 +41,37 @@ export class CakecartComponent implements OnInit {
         console.log(err);
       })
 
-}
+  }
+  removeFromCart(item: any) { // funtion to remove cake from cake cart
+
+    let apiUrl = "https://apibyashu.herokuapp.com/api/removecakefromcart"
+    this.http.post(apiUrl, { cakeid: item.cakeid }).subscribe(
+      (response: any) => {
+        console.log("item removed", response)
+        this.router.navigate(["/cakecart"])
+        this.toastr.success("Item removed")
+        this.getCart();
+
+      }, (error) => {
+        console.log(error);
+      })
+
+  }
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private toastr: ToastrService,
+    private route: ActivatedRoute) {
+
+    this.getCart()
+
+
+  }
 
   ngOnInit(): void {
   }
+  ngDoCheck() {
 
+  }
 }

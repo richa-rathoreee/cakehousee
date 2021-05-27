@@ -1,9 +1,26 @@
+
+
 .container{
     border: brown 1px solid;
     background-color: rgba(222, 174, 135, 0.075);
     padding: 50px;
 
     
+}
+.add-cake{
+    display: flex;
+    justify-content: center;
+}
+.add-cake-btn{
+    border:none;
+    border-radius: 4px;
+    background-color: brown;
+    padding: 10px;
+    color: #fff;
+    margin: 30px 0px;
+}
+.order{
+    margin: 20px 5px;
 }
 .head--row{
     display: flex;

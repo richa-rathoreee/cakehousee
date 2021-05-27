@@ -126,3 +126,14 @@ button:hover{
   cursor: pointer;
   background: #428a7d;
 }
+
+.row{padding: 50px;
+  width: auto;
+  
+}
+
+.btn-add{
+  width: 8vw;
+  /* margin: 10px 300px; */
+
+}

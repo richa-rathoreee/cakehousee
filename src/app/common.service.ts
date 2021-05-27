@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
 
-credentials:any={
 
-}
-confirmOrder:any={
-  
-}
 
-  cousousel:any=[
+
+  credentials: any = {
+
+  }
+  confirmOrder: any = {
+
+  }
+
+  orderConfirmVar: any = false;
+  address: any = false;
+  summery: any = false;
+
+  cousousel: any = [
     "https://images.pexels.com/photos/806363/pexels-photo-806363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     //"https://i.pinimg.com/originals/ab/67/53/ab6753ec1cef75f1cc2052487b1f4059.jpg",
-   // "/assets/cake1.jpeg",
-   "https://images.pexels.com/photos/140831/pexels-photo-140831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-   //"https://images.pexels.com/photos/4987182/pexels-photo-4987182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  "https://images.pexels.com/photos/159887/pexels-photo-159887.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    // "/assets/cake1.jpeg",
+    "https://images.pexels.com/photos/140831/pexels-photo-140831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    //"https://images.pexels.com/photos/4987182/pexels-photo-4987182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "https://images.pexels.com/photos/159887/pexels-photo-159887.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "https://images.pexels.com/photos/433527/pexels-photo-433527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
   ]
 
@@ -39,7 +47,7 @@ confirmOrder:any={
   //     eggless:false,
   //     price:"500 Rs.",
   //     weight:"2.5 kg"
-      
+
   //   },
   //   { id:3,
   //     image:"/assets/cake2.jpg",
@@ -90,35 +98,62 @@ confirmOrder:any={
   //   }
 
   // ]
-  cardCollection:any=[];
- cakeCollection:any=this.cardCollection;
 
-  
-  userDetails:any=[];
+  cardCollection: any = [];
+  cakeCollection: any = this.cardCollection;
 
-  constructor() { }
-  ValidateEmail(input:any) {
+  validateCakeDetail(cake: any) {
+    if (!cake.name) {
 
-    let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  
-    if (input.value.match(validRegex)) {
-  
-      alert("Valid email address!");
-  
-      
-  
-      return true;
-  
-    } else {
-  
-      alert("Invalid email address!");
-  
-      
-  
       return false;
-  
+    }
+    if (!+cake.price || cake.price < 100) {
+
+      return false;
+    }
+    if (!+cake.weight) {
+
+      return false;
+    }
+    if (!cake.type) {
+
+      return false;
+    }
+    if (!cake.flavour) {
+
+      return false;
     }
 
-}
+    return true;
+  }
+
+
+
+  userDetails: any = [];
+
+  constructor(private toastr: ToastrService) { }
+  ValidateEmail(input: any) {
+
+    let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (input.value.match(validRegex)) {
+
+      alert("Valid email address!");
+
+
+
+      return true;
+
+    } else {
+
+      alert("Invalid email address!");
+
+
+
+      return false;
+
+    }
+
+  }
 }
 

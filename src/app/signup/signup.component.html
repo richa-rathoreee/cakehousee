@@ -3,16 +3,16 @@
     
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
-      <hr>
   
-      <label for="email"><b>Email</b></label>
+  
+      <label for="email">Email</label>
       <input [(ngModel)]="user.email" type="text" placeholder="Enter Email" name="email" required>
   
-      <label for="user--name"><b>User Name</b></label>
-      <input [(ngModel)]="user.name" type="text" placeholder="Enter Password" name="psw" required>
+      <label for="user--name">User Name</label>
+      <input [(ngModel)]="user.name" type="text" placeholder="Enter Username" name="psw" required>
   
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input [(ngModel)]="user.password" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <label for="psw-repeat">Password</label>
+      <input [(ngModel)]="user.password" type="password" placeholder="Password" name="psw-repeat" required>
   
       <p style="color:blue">{{message}}</p>
       

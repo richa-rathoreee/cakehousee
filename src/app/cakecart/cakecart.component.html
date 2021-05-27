@@ -1,5 +1,9 @@
-<div class="order">
-    <button routerLink="/placeorder">Order</button>
+<div class="no--cakes" *ngIf="noData">
+    <img src="\assets\nodata.png " height="350px" width="350px" alt="no data found">
+</div>
+
+<div class="order" *ngIf="!noData">
+    <button routerLink="/placeorder" >Order</button>
     <div class="total">Total:  {{total}} Rs.</div>
     <div class="heading">
         <div>S.No.</div>

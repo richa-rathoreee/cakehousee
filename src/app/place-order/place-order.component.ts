@@ -100,7 +100,7 @@ export class PlaceOrderComponent implements OnInit {
   
   constructor(private http: HttpClient,
     private toastr: ToastrService, 
-    private cs:CommonService) {
+    public cs:CommonService) {
     //console.log(cart.items)
 
   }

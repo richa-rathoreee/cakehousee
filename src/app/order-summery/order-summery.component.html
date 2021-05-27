@@ -1,11 +1,32 @@
 
 
+ <div class="order">
+    
+    <div class="heading table table-hover">
+        <div>S.No.</div>
+        <div>Cake image</div>
+        <div>Cake</div>
+        <div>Quantity</div>
+        <div>Price</div>
+        
 
-<div class="order-Summery">
-    <div *ngFor="let odr of order">
-        <div><img src="{{odr.image}}" height="100px" width="100px"></div>
-        <div>Cake Name: {{odr.name}}</div>
-        <div>Cake Price: {{odr.price}}</div>
     </div>
+    <div class="item">
+        <div *ngFor="let odr of order,index as i" class="item--data">
+            <div>{{i+1}}</div>
+            <div><img src="{{odr.image}}" height="70px" width="70px"></div>
+          
+            <div>{{odr.name}}</div>
+            <div>{{odr.quantity}}</div>
+            <div>{{odr.price}}</div>
+            
+        </div>
+    <div class="total">Total:  {{total}} Rs.</div>
+    <div class="next" (click)="next()">Next>></div>
 
-</div>
+
+    
+    </div>
+ 
+</div>  
+

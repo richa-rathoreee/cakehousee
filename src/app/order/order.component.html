@@ -1,4 +1,4 @@
-<!-- 
+<!--
 <div class="order">
 
     <h1>My Orders</h1>
@@ -40,39 +40,48 @@
 
 
 
- <div class="order" >
-   
+<div class="order">
+    <div class="head">
+        <div>S.No.</div>
+        <div>Name</div>
+        <div>Order ID</div>
+        <div>Date</div>
+        <div>Details</div>
+    </div>
     <div class="itemm" *ngFor="let orderDetail of orderDetails,index as i">
-        <div><span>S.No</span>{{i+1}}</div>
-        <div><span>Name</span>{{orderDetail.name}}</div>
-        <div><span>Order ID</span>{{orderDetail.orderid}}</div>
-        <div><span>Date</span>{{orderDetail.orderdate}}</div>
-          <div><button (click)="showDetail(i)">Details</button></div>
 
-        
-    
-     </div>
-     <div class="detail hidden" *ngFor="let orderDetail of orderDetails ,index as i" id=id{{i}}>
-    
-        <div *ngFor="let eachCake of orderDetail.cakes">
-            <img src={{eachCake.image}} height="60px" width="80px">
-        
-            <div>{{eachCake.quantity}}Pcs</div>
-            <div>Cake ID--{{eachCake.cakeid}} </div>
-            <!-- <div>{{eachCake.mode}}</div>
-            <div>{{eachCake.email}}</div> -->
+        <div>{{i+1}}.</div>
+        <div>{{orderDetail.name}}</div>
+        <div>{{orderDetail.orderid}}</div>
+        <div>{{orderDetail.orderdate}}</div>
+        <div><button (click)="showDetail(i)">Details</button></div>
 
+        <div class="detail hidden"  id=id{{i}}>
+
+            
+            <!-- <button (click)="hide(i)" class="hidebtn" *ngIf="toggle">Hide Details</button> -->
+                
+         <div  *ngFor="let eachCake of orderDetail.cakes" class="each-detail">
+
+                <div>
+                <div>{{eachCake.name}}</div>
+
+                <img src={{eachCake.image}} height="60px" width="80px">
+
+                <div>{{eachCake.quantity}}Pcs</div>
+                <div>{{eachCake.price}}Rs.</div>
+</div>
         
-        
+                <!-- <div>{{eachCake.email}}</div> -->
+
+
+
+            </div>
+
+
         </div>
-    
- </div>
 
 
 
-
-
- 
-
-
- 
+    </div>
+</div>

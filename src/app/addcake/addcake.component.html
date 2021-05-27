@@ -1,0 +1,150 @@
+<!-- <div class="container">
+    <h1>Add new cake</h1>
+    <form>
+
+        <div class="cake--name">
+            <label>Cake Name</label>
+            <input [(ngModel)]="cake.name" value={{cake.name}} type="text" name="name">
+        </div>
+        <div class="cake--weight">
+            <label>Cake Weight</label>
+            <input [(ngModel)]="cake.weight" value={{cake.weight}} type="text" name="weight">
+        </div>
+
+        <div class=" cake-image">
+            <label>Cake Image</label>
+            <img src={{cake.image}} type="text" name="image" height="50px" width="50px">
+            <input type="file"[(ngModel)]="cake.image" name="imgupdate"> 
+             <input  type="file" name="profile" (change)="updateImage($event)" />
+        </div>
+        <div class="ingre">
+            <div class="form-group">
+                <label for="ingredients">Ingredients :</label>
+                <div class="flex ingredient">
+                  <div *ngFor="let ingredient of cake.ingredients; index as i">
+                    <input
+                      type="text"
+                      name="{{ ingredient + i }}"
+                      class="form-control"
+                      [(ngModel)]="cake.ingredients[i]"
+                      placeholder="Enter your ingredient"
+                      [id]="'ingredient' + i"
+                    />
+                    <button type="button" class="btn" (click)="deleteIng(i)">
+                      <i class="far fa-trash-alt"></i>
+                    </button>
+                  </div>
+                  <button type="button" class="btn" (click)="addIng($event)">
+                    <i class="fas fa-plus-square fa-2x"></i>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="price">
+            <label>Price</label>
+            <input [(ngModel)]="cake.price" value={{cake.price}} type="text" name="price">
+        </div>
+        <div class="egg">
+            <label>Eggless</label>
+            <input [(ngModel)]="cake.eggless" type="checkbox" id="egg" name="egg" value="egg" *ngIf="cake.eggless"
+                checked>
+            <input [(ngModel)]="cake.eggless" type="checkbox" id="egg" name="eggl" value="egg" *ngIf="!cake.eggless">
+
+        </div>
+        <div class="cake--desc">
+            <label>Cake Description</label>
+            <input [(ngModel)]="cake.description" value={{cake.description}} type="text" name="decs">
+        </div>
+        <div class="cake--type">
+            <label>Cake type</label>
+            <input [(ngModel)]="cake.type" value={{cake.type}} type="text" name="type">
+        </div>
+
+
+        <button (click)="addCake()">submit</button>
+
+    </form>
+</div>
+ -->
+
+<div class="container">
+
+  <h1>Submit Cake Details</h1>
+
+  <form>
+    <div>
+      <label for="name">Cake Name :</label>
+      <input name="name" type="text" id="name" placeholder="Enter cake name" [(ngModel)]="cake.name" />
+    </div>
+    <div>
+      <label for="image">Cake Image :</label>
+      <div class="preview ">
+        <img [src]="cake.image" height=40px width=50px alt="cake Image" />
+      </div>
+      <div class="flex">
+        <input type="file" name="image" (change)="imgPre($event)" id="image" />
+
+        <button type="button" (click)="upload($event)" class="btn btn-primary"> Upload</button>
+      </div>
+    </div>
+
+    <div>
+      <label for="price">Price :</label>
+      <input type="text" name="price" [(ngModel)]="cake.price" placeholder="Enter  cake price" id="price" />
+    </div>
+    <div>
+      <label for="weight">Weight:</label>
+      <input type="text" name="weight" [(ngModel)]="cake.weight" placeholder="Enter cake weight in Kgs" id="weight" />
+
+    </div>
+    <div class=" type">
+      <label for="type">Occasion :</label>
+      <select class="form-select" name="type" [(ngModel)]="cake.type">
+        <option value="">Select Cake type</option>
+        <option value="General">General</option>
+        <option value="Special">Special</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Wedding">Wedding</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="description">Description :</label>
+      <input name="description" type="text" id="description" [(ngModel)]="cake.description"
+        placeholder="Enter Description" autocomplete="disabled" />
+    </div>
+
+
+
+
+
+    <div>
+      <label for="flavour">Flavour :</label>
+
+      <input type="text" name="flavour" class="form-control" [(ngModel)]="cake.flavour"
+        placeholder="Enter your cake flavour" id="flavour" />
+    </div>
+    <div>
+      <label for="eggless">Eggless :</label>
+      <input type="checkbox" name="eggless" [(ngModel)]="cake.eggless" id="eggless" />
+    </div>
+    <div>
+      <label for="ingredients">Ingredients :</label>
+      <div class="flex ingredient">
+        <div *ngFor="let ingre of ingredients; index as i">
+
+          <input type="text" name="{{ ingre + i }}" class="form-control" [(ngModel)]="ingrediant[i]"
+            placeholder="Enter your ingredient" [id]="'ingredien' + i" />
+          <button type="button" class="btn" (click)="deleteIng(i)">
+            <i class="fa fa-minus-circle"></i>
+          </button>
+
+        </div>
+        <button type="button" class="btn" (click)="addIng($event)">
+          <i class="fa fa-plus-square "></i>
+        </button>
+      </div>
+    </div>
+    <button (click)="addcake()" type="submit" class="btn btn-primary">Add New Cake</button>
+  </form>
+</div>

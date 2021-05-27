@@ -1,17 +1,24 @@
 
+<div class="cake-heading">
+  Cakes
+</div>
 
-
-<div class="no--cakes" *ngIf="!cakescard"><img src="\assets\nodata.png " height="400px" width="400px" alt="no data found"></div>
+<div class="no--cakes" *ngIf="!cakescard"><img src="\assets\nodata.png " height="350px" width="350px" alt="no data found"></div>
 <div class="cake--container">
-  <div (click)="getcakeid(eachCake)" *ngFor="let eachCake of cakescard" appHighlight 
+  <div (click)="getcakeid(eachCake)" *ngFor="let eachCake of cakescard | paginate: { itemsPerPage: 12, currentPage: p }"  appHighlight 
     class="card" style="width: 18rem;">
     <div class="cake--img">
       <img src={{eachCake.image}} class="card-img-top" alt="..." height="250px" >
     </div>
     <div class="card-body">
-      <p class="card-text">{{eachCake.name}}</p>
+      <p class="card-text-name">{{eachCake.name}}</p>
      
-      <p class="card-text">{{eachCake.price}}Rs.</p>
+      <p class="card-text-price">{{eachCake.price|currency:"INR"}}</p>
     </div>
+
   </div>
+
+</div>
+<div class="pagi">
+  <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
 </div>

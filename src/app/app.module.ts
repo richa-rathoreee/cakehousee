@@ -38,6 +38,30 @@ import { OrderSummeryComponent } from './order-summery/order-summery.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { GaurdDeactivateService } from './gaurd-deactivate.service';
+import { AddcakeComponent } from './addcake/addcake.component';
+import { DiscountPipe } from './discount.pipe';
+
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from "ngx-ui-loader";
+import {NgxPaginationModule} from 'ngx-pagination';
+import {
+  NgxUiLoaderConfig,
+  SPINNER,
+  POSITION,
+  PB_DIRECTION,
+} from "ngx-ui-loader";
+
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: "#660022",
+  bgsPosition: POSITION.centerCenter,
+  bgsSize: 80,
+  bgsOpacity:1,
+  // bgsType: SPINNER.rectangleBounce, // background spinner type
+  fgsType: SPINNER.chasingDots, // foreground spinner type
+  pbDirection: PB_DIRECTION.leftToRight, // progress bar direction
+  pbThickness: 10, // progress bar thickness
+  
+};
 
 @NgModule({
   declarations: [
@@ -66,7 +90,9 @@ import { GaurdDeactivateService } from './gaurd-deactivate.service';
        AddressComponent,
        OrderSummeryComponent,
        PaymentComponent,
-       ConfirmOrderComponent
+       ConfirmOrderComponent,
+       AddcakeComponent,
+       DiscountPipe
   ],
   imports: [
     HttpClientModule,
@@ -75,8 +101,18 @@ import { GaurdDeactivateService } from './gaurd-deactivate.service';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
+    NgxUiLoaderModule, // import NgxUiLoaderModule
+    NgxUiLoaderHttpModule, // import NgxUiLoaderHttpModule. By default, it will show background loader.
+    // If you need to show foreground spinner, do as follow:
+    // NgxUiLoaderHttpModule.forRoot({ showForeground: true })
+    // Import NgxUiLoaderModule with custom configuration globally
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxPaginationModule
     
   ],
+
+
+
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,

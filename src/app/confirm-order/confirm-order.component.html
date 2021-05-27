@@ -1,15 +1,25 @@
-<p>Confrim Order</p>
+<aside>
+    <div class="cakes-all">
+        <div *ngFor="let placeOdr of placeOrder.cakes">
+            <div><img src="{{placeOdr.image}}" height="100px" width="100px"></div>
+            
+                <div>{{placeOdr.name.toUpperCase()}}</div>
+                <div>Rs.{{placeOdr.price}}</div>
+    
+        </div>
 
+    </div>
+    <div class="owner">
+        <div><span>Name:</span>{{placeOrder.name}}</div>
+        <div><span>Address:</span>{{placeOrder.address}}</div>
+        <div><span>City:</span>{{placeOrder.city}}</div>
+        <div><span>Pincode:</span>{{placeOrder.pincode}}</div>
+        <div><span>Phone no.:</span>{{placeOrder.phone}}</div>
+        <div><span>Mode:</span>Cash</div>
+    </div>
 
-<div>{{placeOrder.name}}</div>
-<div>{{placeOrder.address}}</div>
-<div>{{placeOrder.city}}</div>
-<div>{{placeOrder.pincode}}</div>
-<div>{{placeOrder.phone}}</div>
-<div *ngFor="let placeOdr of placeOrder.cakes">
-    <div>{{placeOdr.price}}</div>
-    <div><img src="{{placeOdr.image}}"></div>
-    <div>{{placeOdr.price}}</div>
+    <div class="total"><span>Total Price:</span>{{total}}</div>
 
-</div>
-<div ><button (click)=cPlaceOrder()>placeOrder</button></div>
+    <div class="button"><button (click)=cPlaceOrder() class="btn">placeOrder</button></div>
+
+</aside>

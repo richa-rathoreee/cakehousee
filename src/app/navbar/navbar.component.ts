@@ -9,17 +9,19 @@ import { Router } from '@angular/router'
 export class NavbarComponent implements OnInit {
   searchcakes: any;
   logBtn: any;
+  admin:any;
+  
 
   search() {
     if (this.searchcakes) {
-      console.log(this.route);
-      console.log(this.searchcakes);
+    
       this.route.navigate(['/searchcakes'], { queryParams: { q: this.searchcakes } })
       //routing to the route searchcakes component with the value q=seachcakes
     }
   }
   logout() {
-    localStorage.removeItem("userLog");// remove the serlog object as user logout
+    localStorage.removeItem("userLog");// remove the userlog object from localstorage as user logout
+    localStorage.removeItem("token")//remove token
   }
 
   constructor(private route: Router) {
@@ -29,6 +31,9 @@ export class NavbarComponent implements OnInit {
   }
   ngDoCheck() {
     (localStorage.userLog) ? (this.logBtn = false) : (this.logBtn = true);
+     this.admin=localStorage.userLog?JSON.parse(localStorage.userLog).email:null;
+   
+
     //if local storage has uselog obj then btn set to logout otherwise set to login
   }
 

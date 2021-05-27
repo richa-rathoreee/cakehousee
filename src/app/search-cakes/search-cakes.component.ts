@@ -15,19 +15,29 @@ export class SearchCakesComponent implements OnInit {
   //cakes:any=[...this.cs.cardCollection];
 
   cakes: any = {}
- 
+  noData:any={}
+
 
   constructor(private route: ActivatedRoute, public cs: CommonService, private http: HttpClient) {
     console.log("query params", this.route.snapshot.queryParams);
 
     let apiUrl = "https://apibyashu.herokuapp.com/api/searchcakes?q=";
-    this.route.queryParams.subscribe((e: any) => {
-      console.log(e);//query params 
-      if (e.q) {// if value of query params is true
-        console.log(e.q);
-        this.http.get(apiUrl + e.q).subscribe((resposne: any) => {
+    this.route.queryParams.subscribe((cakee: any) => {
+      console.log(cakee);//query params 
+      if (cakee.q) {// if value of query params is true
+        console.log(cakee.q);
+        this.http.get(apiUrl + cakee.q).subscribe((resposne: any) => {
           console.log(resposne)
-          this.cakes = resposne.data;
+          this.cakes = resposne.data;//saving res to this.cakesobject
+          console.log(this.cakes.length==0);
+
+          if(this.cakes.length==0){// if array of cakes length is zero
+            this.noData=true;
+          }
+          else{
+            this.noData=false;
+          }
+          
          
           
         },
@@ -40,8 +50,8 @@ export class SearchCakesComponent implements OnInit {
 
     })
   }  
-  priceFilter() {
-    console.log(this.minPrice, this.maxPrice);
+  priceFilter() {//filter the price 
+    // console.log(this.minPrice, this.maxPrice);
     if (this.minPrice || this.maxPrice) {
       this.cakes = this.cakes.filter((e: any) =>
         (this.minPrice ? e.price >= this.minPrice : true) &&

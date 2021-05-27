@@ -52,14 +52,17 @@
 
 <div class="place--o">
   <aside>
-    <div>
-      <li ><a [routerLink]="['ordersummery']">order-Summery</a></li>
-      <li><a [routerLink]="['address']">Address</a></li>
-      <li><a [routerLink]="['payment']">Payment</a></li>
-      <li><a [routerLink]="['confirmorder']">Confirm Order</a></li>
+    <ul>
+      <li ><a [routerLink]="['ordersummery']">Order Summery</a></li>
+
+      <li><a *ngIf="cs.address" [routerLink]="['address']">Address</a></li>
+        <div *ngIf="!cs.address">Address</div>
+      <!-- <li><a *ngIf="cs.orderConfirmVar"[routerLink]="['payment']">Payment</a></li> -->
+      <li><a *ngIf="cs.orderConfirmVar" [routerLink]="['confirmorder']">Confirm Order</a></li>
+      <div *ngIf="!cs.orderConfirmVar">Confirm Order</div>
       
-    </div>
-  </aside>
+      
+    </ul> </aside>
   <router-outlet>
 
   </router-outlet>

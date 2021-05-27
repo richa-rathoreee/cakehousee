@@ -1,4 +1,9 @@
-<div class="filter">
+<div class="no--cakes" *ngIf="noData">
+  <img src="\assets\nodata.png " height="350px" width="350px" alt="no data found">
+</div>
+
+
+<div class="filter" *ngIf="!noData">
   <input [(ngModel)]="minPrice" type="text" name="min" placeholder="min price">
   <input [(ngModel)]="maxPrice" type="text" name="max" placeholder="max price">
   <button (click)="priceFilter()">Filter</button>
@@ -6,7 +11,7 @@
 </div>
 
 <div class="cake--container">
-  <div *ngFor="let eachCake of cakes" appHighlight enterColor="white" leaveColor="red" class="card"
+  <div  routerLink='/cakedetails/{{eachCake.cakeid}}' *ngFor="let eachCake of cakes" appHighlight enterColor="white" leaveColor="red" class="card"
     style="width: 18rem;">
     <div class="veg" *ngIf="eachCake.eggless">
       <div class="square">
@@ -26,12 +31,12 @@
       </div>
     </div>
     <div class="cake--img">
-      <img src={{eachCake.image}} class="card-img-top" alt="...">
+      <img src={{eachCake.image}} class="card-img-top" alt="..." height="100px" width="100px">
     </div>
     <div class="card-body">
-      <p class="card-text">{{eachCake.name}}</p>
-      <p class="card-text">{{eachCake.weight}}</p>
-      <p class="card-text">{{eachCake.price}}</p>
+      <p class="card-text">Name:   {{eachCake.name}}</p>
+      <p class="card-text">Weight: {{eachCake.weight}}</p>
+      <p class="card-text">Price:  {{eachCake.price}}</p>
 
     </div>
   </div>

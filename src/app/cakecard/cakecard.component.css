@@ -3,6 +3,13 @@
     margin:0px;
     padding: 0px;
 }
+.cake-heading{
+    text-align: center;
+    font-size: 4rem;
+    padding: 10px;
+
+
+}
 .cake--container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
@@ -61,7 +68,9 @@
 
 
 
-
+.card{
+    padding-bottom: 10px;
+}
     .card-img-top{
         padding: 20px;
     }
@@ -70,3 +79,22 @@
         text-align: center;
         font-weight: 200;
     }
+
+    .card-text-name{
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .card-text-price{
+        font-size: 1.1em;
+        text-align: center;
+    }
+    .my-pagination /deep/ .ngx-pagination .current {
+        background: rgba(122, 114, 114, 0.692);
+        /* padding-left: 40px; */
+        }
+        .pagi{
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }

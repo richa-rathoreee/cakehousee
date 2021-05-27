@@ -9,23 +9,24 @@ import { Router } from '@angular/router';
 })
 
 export class AdminComponent implements OnInit {
-  cakes:any
+  cakes: any
 
-  editCakeDetails(cake:any){
-  //console.log(cakeid);
-  console.log("cliicked")
-  this.router.navigate(['cakeeditform/', cake.cakeid])
+  editCakeDetails(cake: any) {
+    //console.log(cakeid);
+    console.log("cliicked")
+    this.router.navigate(['cakeeditform/', cake.cakeid])
 
 
-}
+  }
 
-  constructor(private http:HttpClient,private router:Router) { 
+  constructor(private http: HttpClient, private router: Router) {
+
     let apiUrl = "https://apifromashu.herokuapp.com/api/allcakes"
     console.log(apiUrl);
     this.http.get(apiUrl).subscribe(
       (response: any) => {
-         console.log("response from cakes", response)
-      
+        console.log("response from cakes", response)
+
         // console.log(response.data[0].name)
         // console.log(response.data);
         this.cakes = response.data;
@@ -35,7 +36,8 @@ export class AdminComponent implements OnInit {
       (error) => {
         console.log("error from cakes", error)
 
-      })}
+      })
+  }
 
 
   ngOnInit(): void {

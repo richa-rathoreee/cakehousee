@@ -1,0 +1,61 @@
+.container{
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+    margin: 50px auto;
+    width: 50%;
+
+    
+    
+
+}
+form{
+    background-color: rgba(222, 177, 135, 0.404);
+    border-radius: 5px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container>h1{
+    text-align: center;
+}
+form > div{
+   
+    padding: 10px; 
+
+
+}
+form>button{
+    background-color: crimson;
+    border-radius: 2px;
+    border:none;
+    
+
+}
+div>label{
+    font-size: larger;
+    font-weight: 2em;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

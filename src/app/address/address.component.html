@@ -2,14 +2,14 @@
 <form class="row g-3 needs-validation" novalidate>
     <div class="col-md-4">
       <label for="validationCustom01" class="form-label">Name</label>
-      <input [(ngModel)]="order.userName" name="namef" type="text" class="form-control" id="validationCustom01" placeholder="Name" required>
+      <input [(ngModel)]="order.name" name="namef"type="text" class="form-control" id="validationCustom01" placeholder="Name" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
     <div class="col-md-4">
       <label for="validationCustom02" class="form-label">Address</label>
-      <input [(ngModel)]="order.userAddress"name="address" type="text" class="form-control" id="validationCustom02" placeholder="Address" required>
+      <input [(ngModel)]="order.address"name="address" type="text" class="form-control" id="validationCustom02" placeholder="Address" required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -18,7 +18,7 @@
       <label for="validationCustomUsername" class="form-label">Phone no.</label>
       <div class="input-group has-validation">
         
-        <input [(ngModel)]="order.userPhone" name="phone"type="number" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+        <input [(ngModel)]="order.phone" name="phone"type="number" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
         <div class="invalid-feedback">
           Please choose a Phone no.
         </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-6">
       <label for="validationCustom03" class="form-label">City</label>
-      <input [(ngModel)]="order.userCity" name="city" type="text" class="form-control" id="validationCustom03" required>
+      <input [(ngModel)]="order.city" name="city" type="text" class="form-control" id="validationCustom03" required>
       <div class="invalid-feedback">
         Please provide a valid city.
       </div>
@@ -34,13 +34,13 @@
     
     <div class="col-md-3">
       <label for="validationCustom05" class="form-label">pinCode</label>
-      <input [(ngModel)]="order.userPin" name="pin" type="text" class="form-control" id="validationCustom05" required>
+      <input [(ngModel)]="order.pincode" name="pin" type="text" class="form-control" id="validationCustom05" required>
       <div class="invalid-feedback">
         Please provide a valid pin.
       </div>
     </div>
     
     <div class="col-12">
-      <button (click)="addDetail()" class="btn btn-primary" type="submit">Add detail</button>
+      <button (click)="addDetail()" class="btn btn-primary btn-add" type="submit">Add detail</button>
     </div>
   </form>

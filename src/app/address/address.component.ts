@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import{CommonService} from '../common.service'
+import { CommonService } from '../common.service'
 
 
 @Component({
@@ -12,102 +13,88 @@ import{CommonService} from '../common.service'
 export class AddressComponent implements OnInit {
 
   order: any = {}
-  objOrder:any
-  total:any;
-  item:any;
+  objOrder: any
+  total: any;
+  item: any;
 
 
 
 
   addDetail() {
-    //console.log(this.order)
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    let  forms = document.querySelectorAll('.needs-validation')
+    // console.log(",mkjhkhjgjmgjj")
 
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event: any) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
+    if (!this.order.name || !this.order.address ||
+      !this.order.phone || !this.order.pincode || !this.order.city) {
+        this.toastr.show("please fill all details");
 
-          form.classList.add('was-validated')
-        }, false)
+
+      // // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      // let forms = document.querySelectorAll('.needs-validation')
+
+      // // Loop over them and prevent submission
+      // Array.prototype.slice.call(forms)
+      //   .forEach(function (form) {
+      //     form.addEventListener('submit', function (event: any) {
+      //       if (!form.checkValidity()) {
+      //         event.preventDefault()
+      //         event.stopPropagation()
+      //       }
+
+      //       form.classList.add('was-validated')
+      //     }, false)
+      //   })
+
+    }
+
+    else {
+      console.log("else")
+      let apiUrl = "https://apibyashu.herokuapp.com/api/cakecart";
+      this.http.post(apiUrl, {}).subscribe((response: any) => {
+        this.item = response.data;
+        this.total = this.item.reduce((acc: any, item: any) => {
+          return acc + item.price * item.quantity
+        }, 0)
+        console.log(this.total)
+
+        this.objOrder = {
+
+          name: this.order.name,
+          address: this.order.address,
+          city: this.order.city,
+          pincode: this.order.pincode,
+          price: this.total,
+          cakes: response.data,
+          phone: this.order.phone
+        }
+
+
+        
+        // this.toastr.show("Details added")
+        console.log(this.cs.confirmOrder);
+        this.cs.confirmOrder = this.objOrder;
+        this.router.navigate(["/placeorder/confirmorder"])
+        this.cs.orderConfirmVar = true;
+        this.cs.address = true;
+
+
+      }, (error) => {
+        console.log(error)
+
       })
-
-
-
-    //console.log(this.order)
-    let apiUrl = "https://apibyashu.herokuapp.com/api/cakecart";
-
-    this.http.post(apiUrl, {}).subscribe((response: any) => {
-      //console.log(response)
-     // console.log({ order: this.order, res: response.data })
-     this.item=response.data
-     this.total = this.item.reduce((acc: any, item: any) => {
-
-      //  console.log(item.price, item.quantity)
-        return acc+ item.price * item.quantity 
-
-
-        // console.log("total",item)
-
-      }, 0)
-      console.log(this.total)
-
-      this.objOrder={
-        
-        name:this.order.userName,
-        address:this.order.userAddress,
-        city:this.order.userCity,
-        pincode:this.order.userPin,
-        price:this.total,
-        cakes:response.data,
-        phone:this.order.userPhone
-        
-
-        
-      }
-    
-
-      console.log(this.objOrder)
-      this.toastr.show("Details added")
-      console.log(this.cs.confirmOrder);
-      this.cs.confirmOrder=this.objOrder;
-      console.log("cssssssssssssssssssss",this.cs.confirmOrder)
-
-
-    }, (error) => {
-      console.log(error)
-
-    })
-
-    // let apiUrll="https://apibyashu.herokuapp.com/api/addcakeorder";
-    // this.http.post(apiUrll,this.objOrder).subscribe(
-    //   (res:any)=>{
-    //     console.log(res);
-    //   },
-    // (err)=>{
-    //   console.log(err);
-    // })
-
-
-    
-
+    }
 
   }
 
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private toastr: ToastrService,
-    private cs:CommonService) { 
-      this.cs.confirmOrder=this.objOrder
+    private cs: CommonService,
+    private router: Router) {
+    this.cs.confirmOrder = this.objOrder
 
 
-    }
+  }
 
   ngOnInit(): void {
   }

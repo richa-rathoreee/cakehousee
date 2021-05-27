@@ -9,12 +9,11 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./cakecard.component.css']
 })
 export class CakecardComponent implements OnInit {
- 
-
+  p: number = 1;//pagination 
 
   cakescard: any
   //cakeCard = this.cs.cardCollection;
-  getcakeid(cake: any) {
+  getcakeid(cake: any) {  //function to get id of clicked cake
 
     console.log(cake.cakeid)
     this.route.navigate(['cakedetails/', cake.cakeid]);
@@ -25,21 +24,14 @@ export class CakecardComponent implements OnInit {
     public cs: CommonService,
     private route: Router,
     private http: HttpClient) {
-      
-      // setTimeout(function(){
-      //   alert("loading")
-        
-      // },100);
 
     let apiUrl = "https://apibyashu.herokuapp.com/api/allcakes"
-    console.log(apiUrl)
-    this.http.get(apiUrl).subscribe(
+    // console.log(apiUrl)
+    this.http.get(apiUrl).subscribe(  //to communicate with server that is api
       (response: any) => {
-        console.log("response from cakes", response)
-        // console.log(response.data[0].name)
-         console.log(response.data);
+        console.log("response from cakes", response);
         this.cakescard = response.data;
-        
+
 
       },
       (error) => {

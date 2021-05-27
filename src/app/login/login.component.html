@@ -2,17 +2,17 @@
   
     <div class="container">
       <label  for="uname"><b>Email</b></label>
-      <input  [(ngModel)] ="user.email" type="email" placeholder="Enter Username" name="uname" required>
+      <input  [(ngModel)] ="user.email" type="email" placeholder="Enter Email ID" name="uname" required>
   
       <label for="psw"><b>Password</b></label>
       <input [(ngModel)] ="user.password" type="password" placeholder="Enter Password" name="psw" required>
   
-      <button type="submit" (click)=login()>Login</button>
+      <button type="submit" (click)=login() class="login-btn">Login</button>
       
     </div>
   
     <div class="container" style="background-color:rgba(255, 248, 220, 0.541)">
-      <button type="submit" class="cancelbtn" routerLink="/signup">SignUp</button>
+      <button type="submit" class="signup-btn" routerLink="/signup">SignUp</button>
       <span class="psw"><a routerLink ="/forgot">Forgot password?</a></span>
       
     </div>

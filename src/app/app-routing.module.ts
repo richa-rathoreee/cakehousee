@@ -16,6 +16,7 @@ import { OrderSummeryComponent } from './order-summery/order-summery.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PlaceOrderComponent } from './place-order/place-order.component';
+import { ResolveruService } from './resolveru.service';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchCakesComponent } from './search-cakes/search-cakes.component';
 // import { NavbarComponent } from './navbar/navbar.component';
@@ -25,11 +26,11 @@ import { UserTableComponent } from './user-table/user-table.component';
 
 
 const routes: Routes = [
-   {path:"", component: HomeComponent},
+   {path:"", component: HomeComponent },
    {path:"search",component:SearchBarComponent},
    {path:"searchcakes", component:SearchCakesComponent},
    {path:"cakedetails",component:CakedetailComponent},
-   {path:"cakecart",component:CakecartComponent},
+   {path:"cakecart",component:CakecartComponent,resolve:[ResolveruService]},
    {path:"placeorder",component:PlaceOrderComponent,children: [
    
     {
@@ -55,7 +56,7 @@ const routes: Routes = [
    
   ]},
 
-   {path:"admin",loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
+   {path:"admin",loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},//lazy loading
    
    {path:"cakeeditform/:cakeid",component:EditcakeFormComponent},
    {path:"myorder",component:OrderComponent},
@@ -65,7 +66,7 @@ const routes: Routes = [
   {path:"signup",component:SignupComponent},
   {path:"login",component:LoginComponent,canActivate:[GaurdService]},
   {path:"forgot",component:ForgotPassComponent},
-  {path:"cakedetails/:cakeid",component:CakedetailComponent}
+  {path:"cakedetails/:cakeid",component:CakedetailComponent  }
 
 
   // {path:"" Component:}

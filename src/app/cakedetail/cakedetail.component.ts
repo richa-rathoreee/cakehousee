@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from '../common.service'
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class CakedetailComponent implements OnInit {
   cake: any = {}
   objCard: any
   file: any
+  api: any
 
   addToCart(card: any) {
 
@@ -33,19 +35,18 @@ export class CakedetailComponent implements OnInit {
         price: this.cake.price
       };
       console.log(this.objCard);
-      this.toastr.error("item added to cart sucssesfully");
     }
 
     let myHeaders = new HttpHeaders();
     let apiUrl = "https://apibyashu.herokuapp.com/api/addcaketocart"
-    //console.log(apiUrl);
+
     myHeaders = myHeaders.set('authtoken', localStorage.token)
-    //console.log(myHeaders);
-   // console.log(this.objCard)
     this.http.post(apiUrl, this.objCard, {
       headers: myHeaders
     }).subscribe((response: any) => {
       console.log("headers", response)
+      this.toastr.success("item added to cart sucssesfully");
+
 
 
     }, (error) => {
@@ -63,26 +64,26 @@ export class CakedetailComponent implements OnInit {
   // }
 
 
-  uplaodImg(event: any) {
-    this.file = event.target.files[0];
-    console.log(this.file)
-    let apiUrl = "https://apibyashu.herokuapp.com/api/upload";
-   
-    let fd = new FormData();
+  // uplaodImg(event: any) {
+  //   this.file = event.target.files[0];
+  //   console.log(this.file)
+  //   let apiUrl = "https://apibyashu.herokuapp.com/api/upload";
 
-    fd.append("file", this.file)
-    this.http.post(apiUrl, fd)
-      .subscribe(
-        (response: any) => {
-          console.log(response);
+  //   let fd = new FormData();
 
-        },
-        (error) => {
-          console.log(error);
+  //   fd.append("file", this.file)
+  //   this.http.post(apiUrl, fd)
+  //     .subscribe(
+  //       (response: any) => {
+  //         console.log(response);
 
-        })
+  //       },
+  //       (error) => {
+  //         console.log(error);
 
-  }
+  //       })
+
+  // }
 
   constructor(
     private route: ActivatedRoute,
@@ -95,6 +96,7 @@ export class CakedetailComponent implements OnInit {
     console.log("hey/");
     let cakeid = (this.route.snapshot.params.cakeid);
     let apiUrl = `https://apibyashu.herokuapp.com/api/cake/${cakeid}`
+    this.api = apiUrl;
     console.log(apiUrl);
     this.http.get(apiUrl).subscribe(
       (response: any) => {
@@ -106,6 +108,11 @@ export class CakedetailComponent implements OnInit {
         console.log(error);
       })
 
+  }
+  getcake():
+    Observable<any> {
+    // We do not subscribe here! We let the resolver take care of that...
+    return this.http.get(this.api);
   }
 
   ngOnInit(): void {
